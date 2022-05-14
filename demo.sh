@@ -70,7 +70,7 @@ client:
   enabled: true
   join: ${RETRY_JOIN}
 connectInject:
-  enabled: false
+  enabled: true
 controller:
   enabled: false
 ingressGateways:
@@ -79,9 +79,16 @@ syncCatalog:
   enabled: true
 EOF
 
+#TODO check inject false clients true faile with acl issue no such host
+#consul-k8s-control-plane acl-init -component-name=client  -acl-auth-method="terasky-consul-k8s-component-auth-method"  -log-level=trace  -log-json=false   -use-http
+ #s  -server-address="terasky-consul.private.consul.11eb5efd-82fb-db6e-a22f-0242ac11000b.aws.hashicorp.cloud"  -server-port=443  -init-type="client"
+ #2022-05-14T15:05:11.716Z [ERROR] unable to login: error="Unexpected response code: 500 (Post "https://kubernetes.default.svc/apis/authentication.k8s.io/v1/tokenreviews": dial tcp: lookup kubernetes.default.svc on 127.0.0.53:53: no such host)"
+ #2022-05-14T15:05:12.722Z [ERROR] unable to login: error="Unexpected response code: 500 (Post "https://kubernetes.default.svc/apis/authentication.k8s.io/v1/tokenreviews": dial tcp: lookup kubernetes.default.svc on 127.0.0.53:53: no such host)"
+ #2022-05-14T15:05:13.729Z [ERROR] unable to login: error="Unexpected response code: 500 (Post "https://kubernetes.default.svc/apis/authentication.k8s.io/v1/tokenreviews": dial tcp: lookup kubernetes.default.svc on 127.0.0.53:53: no such host)"
+#TODO check why only sync true catalog fails with Error: INSTALLATION FAILED: Deployment.apps "terasky-consul-sync-catalog" is invalid: [spec.template.spec.containers[0].volumeMounts[1].name: Not found: "consul-ca-cert", spec.template.spec.initContainers[0].volumeMounts[1].name: Not found: "consul-auto-encrypt-ca-cert"]
 
 pe 'cat config.yaml'
-pe 'helm install --wait consul -f config.yaml hashicorp/consul --version "0.43.0" --set global.image=hashicorp/consul-enterprise:1.11.5-ent'
+pe 'helm install --wait consul -f config.yaml hashicorp/consul --version "0.43.0" --set global.image=hashicorp/consul-enterprise:1.12.0-ent'
 
 pe 'kubectl get pods'
 

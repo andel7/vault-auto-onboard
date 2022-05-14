@@ -7,3 +7,6 @@ variable "region" {
 variable "tfc_organization_name" {
   type = string
 }
+variable "hvn_id" {
+  type = string
+}

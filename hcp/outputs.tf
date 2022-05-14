@@ -16,11 +16,11 @@ output "consul_root_token_secret_id" {
 }
 
 output "vault_private_endpoint_url" {
-  value = hcp_vault_cluster.demo_hcp_vault.vault_private_endpoint_url
+  value = hcp_vault_cluster.terasky_hcp_vault.vault_private_endpoint_url
 }
 
 output "vault_public_endpoint_url" {
-  value = hcp_vault_cluster.demo_hcp_vault.vault_public_endpoint_url
+  value = hcp_vault_cluster.terasky_hcp_vault.vault_public_endpoint_url
 }
 
 output "vault_admin_token" {

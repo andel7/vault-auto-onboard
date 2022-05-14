@@ -1,5 +1,5 @@
 output "cidr_block" {
-  value = hcp_hvn.demo_hcp_hvn.cidr_block
+  value = hcp_hvn.terasky_hcp_hvn.cidr_block
 }
 
 output "consul_ca_file" {

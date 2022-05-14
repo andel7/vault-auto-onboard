@@ -1,10 +1,10 @@
 terraform {
   backend "remote" {
     hostname     = "app.terraform.io"
-    organization = ""
+    organization = "TeraSky"
 
     workspaces {
-      name = "VPC"
+      name = "aws"
     }
   }
 }

@@ -1,6 +1,6 @@
 variable "name" {
   type    = string
-  default = "zerotrust"
+  default = "auto-onboard"
 }
 variable "public_subnets" {
   type = list(any)
@@ -12,4 +12,12 @@ variable "public_subnets" {
 }
 variable "cidr" {
   default = "10.0.0.0/16"
+}
+variable "instance_types" {
+  type = list(string)
+  
+}
+
+variable "tags" {
+  type = map
 }

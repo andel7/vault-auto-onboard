@@ -4,7 +4,7 @@ module "eks" {
 
   cluster_name                    = "kubernetes"
   cluster_version                 = "1.21"
-  cluster_endpoint_private_access = true
+  cluster_endpoint_private_access = false
   cluster_endpoint_public_access  = true
 
   cluster_encryption_config = [{
@@ -13,7 +13,7 @@ module "eks" {
   }]
 
   vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
+  subnet_ids = module.vpc.public_subnets
   node_security_group_additional_rules = {
     ingress_self_all_from_self = {
       description = "Node to node all ports/protocols"

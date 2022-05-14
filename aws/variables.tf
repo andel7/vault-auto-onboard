@@ -15,9 +15,8 @@ variable "cidr" {
 }
 variable "instance_types" {
   type = list(string)
-  
-}
 
+}
 variable "tags" {
   type = map
 }
